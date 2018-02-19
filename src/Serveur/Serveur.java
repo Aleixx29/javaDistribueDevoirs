@@ -6,20 +6,20 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Serveur implements MacInterface{
-    private mac mac;
+    private OUI OUI;
     Serveur(){
-        this.mac = new mac();
+        this.OUI = new OUI();
     }
-    public String[] getmac(String assignment) throws RemoteException {
+    public OUI getOUI(String assignment) throws RemoteException {
         TestDataBase req = new TestDataBase();
         String test[] = new String[2];
         test = req.getVendorData(assignment);
 
-        this.mac.setAssignment(assignment);
-        this.mac.setOrganizationName(test[0]);
-        this.mac.setOrganizationAddress(test[1]);
+        this.OUI.setAssignment(assignment);
+        this.OUI.setOrganizationName(test[0]);
+        this.OUI.setOrganizationAddress(test[1]);
 
-        return test;
+        return this.OUI;
     }
     public static void main (String args[]) {
 

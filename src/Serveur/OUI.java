@@ -1,16 +1,18 @@
 package Serveur;
 
-public class mac {
+import java.io.Serializable;
+
+public class OUI implements Serializable {
     private String Assignment;
     private String OrganizationName;
     private String OrganizationAddress;
 
-    public mac(String assignment,String organizationName, String organizationAddress){
+    public OUI(String assignment, String organizationName, String organizationAddress){
         this.Assignment = assignment;
         this.OrganizationName = organizationName;
         this.OrganizationAddress = organizationAddress;
     }
-    public mac(){
+    public OUI(){
 
     }
 
