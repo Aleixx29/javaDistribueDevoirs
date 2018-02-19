@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Client extends JFrame {
 
+    JLabel introduction;
     JLabel nomVendeur;
     JLabel adresseVendeur;
     JTextField input;
@@ -26,6 +27,7 @@ public class Client extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        introduction = new JLabel("Bienvenue dans OUI Lookup Tool, entrez un identifiant et cliquez sur search pour obetnir son nom et son adresse.");
         nomVendeur = new JLabel("Vendor name :");
         adresseVendeur = new JLabel("Vendor address :");
         input = new JTextField(10);
@@ -39,6 +41,7 @@ public class Client extends JFrame {
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
         Panel panel3 = new Panel();
+        Panel panel4 = new Panel();
 
         //Bouton Search
         search.addActionListener(new ActionListener() {
@@ -52,13 +55,18 @@ public class Client extends JFrame {
                     if (input.getText().length() > 0 && verifText(input.getText())){
 
                     }else{
-
+                        //Message d'erreur si erreur sur le champ
+                        erreur();
                     }
                 }catch(Exception ex){
-
+                    System.err.println("Client exception: " + ex.toString());
+                    ex.printStackTrace();
                 }
             }
         });
+
+        ihm(panel, panel1, panel2, panel3, panel4);
+
 
         //Bouton Clear
         clear.addActionListener(new ActionListener() {
@@ -75,9 +83,35 @@ public class Client extends JFrame {
             @Override
             //On met un ActionListener sur notre bouton Exit
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
             }
         });
+    }
+
+    private void ihm(Panel panel, Panel panel1, Panel panel2, Panel panel3, Panel panel4) {
+        panel1.add(introduction);
+        panel2.add(nomVendeur);
+        panel2.add(resultat1);
+        panel3.add(adresseVendeur);
+        panel3.add(resultat2);
+        panel4.add(input);
+        panel4.add(search);
+        panel4.add(clear);
+        panel4.add(exit);
+        panel.setLayout(new BorderLayout());
+        panel.add(panel1,BorderLayout.NORTH);
+        panel.add(panel2,BorderLayout.CENTER);
+        panel.add(panel3,BorderLayout.EAST);
+        panel.add(panel4,BorderLayout.SOUTH);
+        this.setContentPane(panel);
+        this.setVisible(true);
+    }
+
+    private void erreur() {
+        resultat1.setForeground(Color.RED);
+        resultat1.setText("Il y a une erreur dans la saisie. L'identifiant doit contenir 6 caractères et des majuscules. (exemple : 0050BA) ");
+        resultat2.setForeground(Color.RED);
+        resultat2.setText("Il y a une erreur dans la saisie. L'identifiant doit contenir 6 caractères et des majuscules. (exemple : 0050BA) ");
     }
 
     private void reset() {
@@ -92,5 +126,10 @@ public class Client extends JFrame {
         if (string.matches("/[0-9A-Z]{6}/"))
             return false;
         return true;
+    }
+
+    public static void main (String args[]) {
+        // On lance notre fenêtre
+        Client client = new Client();
     }
 }
