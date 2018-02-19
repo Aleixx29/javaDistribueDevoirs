@@ -45,7 +45,18 @@ public class Client extends JFrame {
             @Override
             //On met un ActionListener sur notre bouton Search
             public void actionPerformed(ActionEvent e) {
+                //On réinit nos champs réusltats
+                reset();
+                try {
+                    //On check le champ input
+                    if (input.getText().length() > 0 && verifText(input.getText())){
 
+                    }else{
+
+                    }
+                }catch(Exception ex){
+
+                }
             }
         });
 
@@ -55,10 +66,7 @@ public class Client extends JFrame {
             //On met un ActionListener sur notre bouton Clear
             public void actionPerformed(ActionEvent e) {
                 //On clear les champs resultats
-                resultat1.setText("");
-                resultat1.setForeground(Color.BLACK);
-                resultat2.setText("");
-                resultat2.setForeground(Color.BLACK);
+                reset();
             }
         });
 
@@ -70,5 +78,19 @@ public class Client extends JFrame {
 
             }
         });
+    }
+
+    private void reset() {
+        resultat1.setText("");
+        resultat1.setForeground(Color.WHITE);
+        resultat2.setText("");
+        resultat2.setForeground(Color.WHITE);
+    }
+
+    public boolean verifText (String string){
+        //On cherche tous les caractères autre
+        if (string.matches("/[0-9A-Z]{6}/"))
+            return false;
+        return true;
     }
 }
