@@ -1,9 +1,14 @@
 package Client;
 
+import Serveur.MacInterface;
+import Serveur.OUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class Client extends JFrame {
 
@@ -53,7 +58,13 @@ public class Client extends JFrame {
                 try {
                     //On check le champ input
                     if (input.getText().length() > 0 && verifText(input.getText())){
+                        Registry registry = LocateRegistry.getRegistry("127.0.0.1");
 
+                        // Obtenir une r�f�rence de l'objet distant
+                        MacInterface stub = (MacInterface) registry.lookup("MacInterface");
+
+                        // Utiliser les m�thodes de l'objet distant
+                        OUI OUI = stub.getOUI(input.getText());
                     }else{
                         //Message d'erreur si erreur sur le champ
                         erreur();
