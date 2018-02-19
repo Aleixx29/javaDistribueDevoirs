@@ -10,6 +10,7 @@ public class Client extends JFrame {
     JLabel introduction;
     JLabel nomVendeur;
     JLabel adresseVendeur;
+    JLabel inputText;
     JTextField input;
     JButton search;
     JButton clear;
@@ -23,13 +24,14 @@ public class Client extends JFrame {
 
         //On créer notre fenêtre
         this.setTitle("DataDevoir");
-        this.setSize(650,300);
+        this.setSize(850,300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         introduction = new JLabel("Bienvenue dans OUI Lookup Tool, entrez un identifiant et cliquez sur search pour obetnir son nom et son adresse.");
         nomVendeur = new JLabel("Vendor name :");
         adresseVendeur = new JLabel("Vendor address :");
+        inputText = new JLabel("Input");
         input = new JTextField(10);
         search = new JButton("Search");
         clear = new JButton("Clear");
@@ -92,17 +94,17 @@ public class Client extends JFrame {
         panel1.add(introduction);
         panel2.add(nomVendeur);
         panel2.add(resultat1);
-        panel3.add(adresseVendeur);
-        panel3.add(resultat2);
-        panel4.add(input);
-        panel4.add(search);
-        panel4.add(clear);
-        panel4.add(exit);
+        panel2.add(adresseVendeur);
+        panel2.add(resultat2);
+        panel3.add(inputText);
+        panel3.add(input);
+        panel3.add(search);
+        panel3.add(clear);
+        panel3.add(exit);
         panel.setLayout(new BorderLayout());
         panel.add(panel1,BorderLayout.NORTH);
         panel.add(panel2,BorderLayout.CENTER);
-        panel.add(panel3,BorderLayout.EAST);
-        panel.add(panel4,BorderLayout.SOUTH);
+        panel.add(panel3,BorderLayout.SOUTH);
         this.setContentPane(panel);
         this.setVisible(true);
     }
@@ -116,9 +118,9 @@ public class Client extends JFrame {
 
     private void reset() {
         resultat1.setText("");
-        resultat1.setForeground(Color.WHITE);
+        resultat1.setForeground(Color.BLACK);
         resultat2.setText("");
-        resultat2.setForeground(Color.WHITE);
+        resultat2.setForeground(Color.BLACK);
     }
 
     public boolean verifText (String string){
