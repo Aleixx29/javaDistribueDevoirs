@@ -2,6 +2,8 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Client extends JFrame {
 
@@ -9,8 +11,8 @@ public class Client extends JFrame {
     JLabel adresseVendeur;
     JTextField input;
     JButton search;
-    JButton deleteData;
-    JButton exitApp;
+    JButton clear;
+    JButton exit;
 
     public Client() {
         //On fait appel au constructeur JFrame
@@ -26,8 +28,8 @@ public class Client extends JFrame {
         adresseVendeur = new JLabel("Vendor address :");
         input = new JTextField(10);
         search = new JButton("Search");
-        deleteData = new JButton("Clear");
-        exitApp = new JButton("Exit");
+        clear = new JButton("Clear");
+        exit = new JButton("Exit");
 
         Panel panel = new Panel();
         Panel panel1 = new Panel();
@@ -35,5 +37,30 @@ public class Client extends JFrame {
         Panel panel3 = new Panel();
 
         //Bouton Search
+        search.addActionListener(new ActionListener() {
+            @Override
+            //On met un ActionListener sur notre bouton Search
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        //Bouton Clear
+        clear.addActionListener(new ActionListener() {
+            @Override
+            //On met un ActionListener sur notre bouton Clear
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        //Bouton Exit
+        exit.addActionListener(new ActionListener() {
+            @Override
+            //On met un ActionListener sur notre bouton Exit
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }
