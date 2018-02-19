@@ -67,6 +67,8 @@ public class Client extends JFrame {
 
                         // Utiliser les m�thodes de l'objet distant
                         OUI OUI = stub.getOUI(input.getText());
+                        resultat1.setText(OUI.getOrganizationName());
+                        resultat2.setText(OUI.getOrganizationAddress());
                     }else{
                         //Message d'erreur si erreur sur le champ
                         erreur();
