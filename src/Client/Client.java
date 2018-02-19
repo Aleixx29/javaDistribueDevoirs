@@ -138,7 +138,7 @@ public class Client extends JFrame {
 
     public boolean verifText (String string){
         //On cherche tous les caractères autre
-        if (string.matches("/[0-9A-Z]{6}/"))
+        if (string.matches("/[0-9A-F]{6}/"))
             return false;
         return true;
     }
