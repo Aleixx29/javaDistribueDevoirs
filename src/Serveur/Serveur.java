@@ -10,7 +10,9 @@ public class Serveur implements MacInterface{
     Serveur(){
         this.OUI = new OUI();
     }
+    //Method appelé à distance
     public OUI getOUI(String assignment) throws RemoteException {
+        //réutilisation du code de l'exemple
         TestDataBase req = new TestDataBase();
         String test[] = new String[2];
         test = req.getVendorData(assignment);
@@ -18,19 +20,20 @@ public class Serveur implements MacInterface{
         this.OUI.setAssignment(assignment);
         this.OUI.setOrganizationName(test[0]);
         this.OUI.setOrganizationAddress(test[1]);
-
+        //on retourne l'objet OUI au client
         return this.OUI;
     }
+    //Main programme du serveur
     public static void main (String args[]) {
 
         try {
-            // Cr�er un objet instance de la classe ServeurHello
+            // Créer un objet instance de la classe Serveur
             Serveur obj = new Serveur();
             // Exporter l'objet pour lui permettre de recevoir des appels externes sur le port 1234 par exemple
             MacInterface stub = (MacInterface) UnicastRemoteObject.exportObject(obj, 1234);
 
-            // Lier le stub de l'objet accessible � distance au registry
-            // le port par d�faut utilis� par le processus rmiregistery est le port 1099
+            // Lier le stub de l'objet accessible à distance au registry
+            // le port par défaut utilisé par le processus rmiregistery est le port 1099
             //Registry registry = LocateRegistry.getRegistry();
             Registry registry = LocateRegistry.createRegistry(1099);
             registry.bind("MacInterface", stub);

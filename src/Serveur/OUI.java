@@ -7,11 +7,13 @@ public class OUI implements Serializable {
     private String OrganizationName;
     private String OrganizationAddress;
 
+    //construteur de la classe OUI
     public OUI(String assignment, String organizationName, String organizationAddress){
         this.Assignment = assignment;
         this.OrganizationName = organizationName;
         this.OrganizationAddress = organizationAddress;
     }
+
     public OUI(){
 
     }

@@ -59,7 +59,7 @@ public class Client extends JFrame {
                 reset();
                 try {
                     //On check le champ input
-                    if (input.getText().length() > 0 && verifText(input.getText())){
+                    if ((input.getText().length() > 0) && verifText(input.getText())){
                         Registry registry = LocateRegistry.getRegistry("127.0.0.1");
 
                         // Obtenir une r�f�rence de l'objet distant
@@ -136,11 +136,9 @@ public class Client extends JFrame {
         resultat2.setForeground(Color.BLACK);
     }
 
-    public boolean verifText (String string){
-        //On cherche tous les caractères autre
-        if (string.matches("/[0-9A-F]{6}/"))
-            return false;
-        return true;
+    private boolean verifText(String string){
+        //On vérifie que les 6 premier caractère sont Hexadécimal
+        return string.matches("^[0-9A-F]{6}");
     }
 
     public static void main (String args[]) {
