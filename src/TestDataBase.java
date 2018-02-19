@@ -12,10 +12,10 @@ public class TestDataBase {
        
    } 
    
-   // Cette méthode retourne un tableau composé de deux chaines de caractères
-   // La première contient le nom du vendeur, null si pas trouvé
-   // La seconde contient l'adresse du vendeur, null si pas trouvé
-   // Elle reçoit en argument l'identifiant OUI d'un équipement réseau sous la forme de 6 caractères hexadécimaux (0 à F)
+   // Cette mÃ©thode retourne un tableau composÃ© de deux chaines de caractÃ¨res
+   // La premiÃ¨re contient le nom du vendeur, null si pas trouvÃ©
+   // La seconde contient l'adresse du vendeur, null si pas trouvÃ©
+   // Elle reÃ§oit en argument l'identifiant OUI d'un Ã©quipement rÃ©seau sous la forme de 6 caractÃ¨res hexadÃ©cimaux (0 Ã  F)
    public String[] getVendorData(String mac) {  
       String request = "SELECT OrganizationName, OrganizationAddress FROM oui WHERE Assignment='"+mac+"'";
       String data[] = new String[2];
