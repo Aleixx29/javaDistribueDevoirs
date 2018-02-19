@@ -13,6 +13,8 @@ public class Client extends JFrame {
     JButton search;
     JButton clear;
     JButton exit;
+    JTextArea resultat1;
+    JTextArea resultat2;
 
     public Client() {
         //On fait appel au constructeur JFrame
@@ -30,6 +32,8 @@ public class Client extends JFrame {
         search = new JButton("Search");
         clear = new JButton("Clear");
         exit = new JButton("Exit");
+        resultat1 = new JTextArea();
+        resultat2 = new JTextArea();
 
         Panel panel = new Panel();
         Panel panel1 = new Panel();
@@ -50,7 +54,11 @@ public class Client extends JFrame {
             @Override
             //On met un ActionListener sur notre bouton Clear
             public void actionPerformed(ActionEvent e) {
-
+                //On clear les champs resultats
+                resultat1.setText("");
+                resultat1.setForeground(Color.BLACK);
+                resultat2.setText("");
+                resultat2.setForeground(Color.BLACK);
             }
         });
 
